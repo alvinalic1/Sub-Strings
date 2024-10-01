@@ -4,17 +4,23 @@ def substrings(string, dictionary)
   char_array = string.split("")
   start = 0
   last = string.length
-  puts char_array.to_s
+  result = Hash.new
   char_array.each do |char|
-  current_word = char_array[start..last]
-  puts current_word
+  current_word = char_array[start..last].join("")
   start +=1
-  puts "-----------------------"
-    
+  
+  if(dictionary.include?(current_word))
+    if(result.key?(current_word))
+      result[current_word] += 1
+    else
+    result[current_word] = 1
+    end
   end
-  puts last
-  puts char_array
+  
+  end
+
   dictionary.include?(string)
+  result
 end
 
 puts substrings("below", dictionary)
